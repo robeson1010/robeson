@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Vision framework | Robeson’s Blog</title>
+<meta name="generator" content="Jekyll v4.0.0" />
+<meta property="og:title" content="Vision framework" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Vision framework is an end-to-end framework for image video classification and segmentation. Thisframework makes it easy to write and launch distributed training jobs." />
+<meta property="og:description" content="Vision framework is an end-to-end framework for image video classification and segmentation. Thisframework makes it easy to write and launch distributed training jobs." />
+<link rel="canonical" href="https://robeson1010.github.io/robeson/jupyter/2020/07/18/Introduction.html" />
+<meta property="og:url" content="https://robeson1010.github.io/robeson/jupyter/2020/07/18/Introduction.html" />
+<meta property="og:site_name" content="Robeson’s Blog" />
+<meta property="og:image" content="https://robeson1010.github.io/robeson/images/frame.jpg" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-07-18T00:00:00-05:00" />
+<script type="application/ld+json">
+{"headline":"Vision framework","description":"Vision framework is an end-to-end framework for image video classification and segmentation. Thisframework makes it easy to write and launch distributed training jobs.","datePublished":"2020-07-18T00:00:00-05:00","dateModified":"2020-07-18T00:00:00-05:00","image":"https://robeson1010.github.io/robeson/images/frame.jpg","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://robeson1010.github.io/robeson/jupyter/2020/07/18/Introduction.html"},"url":"https://robeson1010.github.io/robeson/jupyter/2020/07/18/Introduction.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/robeson/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://robeson1010.github.io/robeson/feed.xml" title="Robeson's Blog" /><link rel="shortcut icon" type="image/x-icon" href="/robeson/images/favicon.ico"><link href="https://unpkg.com/@primer/css/dist/primer.css" rel="stylesheet" />
+<link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css"><script src="https://hypothes.is/embed.js" async></script>
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/robeson/">Robeson&#39;s Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/robeson/about/">About Me</a><a class="page-link" href="/robeson/search/">Search</a><a class="page-link" href="/robeson/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Vision framework</h1><p class="page-description">Vision framework is an end-to-end framework for image video classification and segmentation. Thisframework makes it easy to write and launch distributed training jobs.</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-07-18T00:00:00-05:00" itemprop="datePublished">
+        Jul 18, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      1 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/robeson/categories/#jupyter">jupyter</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/robeson1010/robeson/tree/master/_notebooks/2020-07-18-Introduction.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/robeson/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/robeson1010/robeson/master?filepath=_notebooks%2F2020-07-18-Introduction.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/robeson/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/robeson1010/robeson/blob/master/_notebooks/2020-07-18-Introduction.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/robeson/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <ul class="section-nav">
+<li class="toc-entry toc-h1"><a href="#Installation-and-updating">Installation and updating </a></li>
+<li class="toc-entry toc-h1"><a href="#Creating-a-custom-dataset">Creating a custom dataset </a></li>
+<li class="toc-entry toc-h1"><a href="#Creating-a-custom-or-existing-model">Creating a custom or existing model </a></li>
+<li class="toc-entry toc-h1"><a href="#Creating-a-custom-loss">Creating a custom loss </a></li>
+<li class="toc-entry toc-h1"><a href="#Trainning-model">Trainning model </a></li>
+<li class="toc-entry toc-h1"><a href="#Model-evaluation">Model evaluation </a></li>
+</ul><!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2020-07-18-Introduction.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Installation-and-updating">
+<a class="anchor" href="#Installation-and-updating" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation and updating<a class="anchor-link" href="#Installation-and-updating"> </a>
+</h1>
+<p>To install or update the framework, we recommend pip:</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">mmuvision</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Creating-a-custom-dataset">
+<a class="anchor" href="#Creating-a-custom-dataset" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating a custom dataset<a class="anchor-link" href="#Creating-a-custom-dataset"> </a>
+</h1>
+<p>The data block API lets you customize the creation of a DataBunch by isolating the underlying parts of that process in separate blocks, mainly:</p>
+<p>Where are the inputs and how to create them?
+How to split the data into a training and validation sets?
+How to label the inputs?
+What transforms to apply?
+How to add a test set?
+How to wrap in dataloaders and create the DataBunch?
+Each of these may be addressed with a specific block designed for your unique setup. Your inputs might be in a folder, a csv file, or a dataframe. You may want to split them randomly, by certain indices or depending on the folder they are in. You can have your labels in your csv file or your dataframe, but it may come from folders or a specific function of the input. You may choose to add data augmentation or not. A test set is optional too. Finally you have to set the arguments to put the data together in a DataBunch (batch size, collate function...)</p>
+<p>The data block API is called as such because you can mix and match each one of those blocks with the others, allowing for a total flexibility to create your customized DataBunch for training, validation and testing. The factory methods of the various DataBunch are great for beginners but you can't always make your data fit in the tracks they require.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Creating-a-custom-or-existing-model">
+<a class="anchor" href="#Creating-a-custom-or-existing-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating a custom or existing model<a class="anchor-link" href="#Creating-a-custom-or-existing-model"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Creating-a-custom-loss">
+<a class="anchor" href="#Creating-a-custom-loss" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating a custom loss<a class="anchor-link" href="#Creating-a-custom-loss"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Trainning-model">
+<a class="anchor" href="#Trainning-model" aria-hidden="true"><span class="octicon octicon-link"></span></a>Trainning model<a class="anchor-link" href="#Trainning-model"> </a>
+</h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Model-evaluation">
+<a class="anchor" href="#Model-evaluation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Model evaluation<a class="anchor-link" href="#Model-evaluation"> </a>
+</h1>
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><a class="u-url" href="/robeson/jupyter/2020/07/18/Introduction.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/robeson/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/robeson/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/robeson/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>An easy to use blogging platform with support for Jupyter Notebooks.</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/robeson1010" title="robeson1010"><svg class="svg-icon grey"><use xlink:href="/robeson/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://twitter.com/robeson1010" title="robeson1010"><svg class="svg-icon grey"><use xlink:href="/robeson/assets/minima-social-icons.svg#twitter"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
