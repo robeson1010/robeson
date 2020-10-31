@@ -1,0 +1,449 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Language" content="en-us" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link rel="dns-prefetch" href="//securepubads.g.doubleclick.net">
+<script async data-cfasync="false" src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+<script data-ad-client="ca-pub-1824159593240186" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" type="f0b024bdcc9ceddab567b803-text/javascript"></script>
+<script data-cfasync="false" type="text/javascript">
+
+var mobileAds = [];
+var desktopAds = [];
+        desktopAds.push('div-gpt-ad-1571234814854-0');
+        desktopAds.push('div-gpt-ad-1543611524799-0');
+        desktopAds.push('div-gpt-ad-1543611617896-0');
+
+var slots_gallery = {};
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [];
+
+var isSmallScreen = null;
+
+function hideAdSlot(slotId) {
+    var slot = document.getElementById(slotId);
+    if(slot === null){
+        return;
+    }
+    slot.style.display = 'none';
+}
+
+function showAdSlot(slotId) {
+    var slot = document.getElementById(slotId);
+    if(slot === null){
+        return;
+    }
+    slot.removeAttribute('style');
+}
+
+var switchAdsTo = function(){
+var width = top.innerWidth || document.documentElement.clientWidth;
+    if(isSmallScreen === null){isSmallScreen=(width >= 768);return '';}
+    if (width >= 768 && isSmallScreen) {
+        isSmallScreen = false;
+        return 'desktop';
+    }
+    if (width < 768 && !isSmallScreen) {
+        isSmallScreen = true;
+        return 'mobile';
+    }
+    return '';
+};
+
+function onResize(){
+var switchTo = switchAdsTo();
+
+    if(switchTo === ''){
+        return;
+    }
+    var showAds, hideAds = [];
+    if(switchTo === 'mobile'){
+        showAds = mobileAds;
+        hideAds = desktopAds;
+    }
+
+    if(switchTo === 'desktop'){
+        showAds = desktopAds;
+        hideAds = mobileAds;
+    }
+
+    if(showAds.length > 0){
+        for (var i = 0; i < showAds.length; i++) {
+            showAdSlot(showAds[i]);
+        }
+        for (var i = 0; i < hideAds.length; i++) {
+            hideAdSlot(hideAds[i]);
+        }
+        adsLoadFunction();
+    }
+}
+
+
+function checkGoogleTagApi(){
+    if (window.googletag && googletag.apiReady) {
+        adsLoadFunction();
+
+        setTimeout(function () {
+            if (typeof lazyLoadFunc === "function") {
+                lazyLoadFunc();
+            }
+		}, 100);
+
+        return;
+    }
+    setTimeout(function () {
+        checkGoogleTagApi();
+    }, 100);
+}
+
+
+var SECONDS_TO_WAIT_AFTER_VIEWABILITY = 60;
+var SECONDS_TO_WAIT_AFTER_VIEWABILITY_ADHENCE = 30;
+googletag.cmd.push(function () {
+
+var stickySlotElementId = 'div-gpt-ad-1555778185332-0'; // Place Bottom Rail sticky element id here // Place Bottom Rail sticky element id here
+var targetSlot = '/1003244/GPT-Billboard';
+var bottomAds = ['/1003244/desktop_leaderboard_adhesion', '/1003244/mobile_leaderboard_adhesion'];
+
+slots_gallery['div-gpt-ad-1571234814854-0'] = googletag.defineSlot('/1003244/Leaderboard1019', [728,90], 'div-gpt-ad-1571234814854-0').addService(googletag.pubads());
+slots_gallery['div-gpt-ad-1543611524799-0'] = googletag.defineSlot('/1003244/WideskyscraperLeft', [160,600], 'div-gpt-ad-1543611524799-0').addService(googletag.pubads());
+slots_gallery['div-gpt-ad-1543611617896-0'] = googletag.defineSlot('/1003244/WideskyscraperRight2', [160,600], 'div-gpt-ad-1543611617896-0').addService(googletag.pubads());
+
+
+    googletag.pubads().addEventListener('impressionViewable', function(event) {
+        var slot = event.slot;
+        if (bottomAds.includes(slot.getAdUnitPath())) {
+            setTimeout(function() {
+                googletag.pubads().refresh([slot]);
+            }, SECONDS_TO_WAIT_AFTER_VIEWABILITY_ADHENCE * 1000);
+        }
+        if (slot.getSlotElementId() !== stickySlotElementId) {
+            setTimeout(function() {
+                googletag.pubads().refresh([slot]);
+            }, SECONDS_TO_WAIT_AFTER_VIEWABILITY * 1000);
+        }
+
+        if(event.slot.getAdUnitPath() === targetSlot) {
+            setTimeout(function() {
+                var slotWrapper = document.getElementById(event.slot.getSlotElementId()).parentNode;
+                slotWrapper.removeEventListener('scroll', scrollBillboard, false);
+                slotWrapper.classList.add('ad-top-billboard-rendered');
+                slotWrapper.classList.remove('ad-top-billboard-init');
+                slotWrapper.removeAttribute('style');
+            }, 250);
+        }
+    });
+
+    googletag.pubads().addEventListener('slotRenderEnded', function(event) {
+        if(event.slot.getAdUnitPath() === targetSlot) {
+            setTimeout(function() {
+                var slotWrapper = document.getElementById(event.slot.getSlotElementId()).parentNode;
+                slotWrapper.classList.add('ad-top-billboard-loaded');
+                slotWrapper.removeEventListener('scroll', scrollBillboard, false);
+                slotWrapper.classList.remove('ad-top-billboard-init');
+                slotWrapper.removeAttribute('style');
+            }, 100);
+        }
+    });
+
+    // Bottom Rail resfresh function
+	var refreshTimeoutId;
+	var refreshTimeout = 30; // Specify refresh interval in sec
+	var visibilityPercent = 50; // Specify slot visibility percentage when refresh should occur. If current visibility is less no refresh happens.
+
+	googletag.pubads().addEventListener('slotVisibilityChanged', function(event) {
+			var slot = event.slot;
+			if (slot.getSlotElementId() === stickySlotElementId) {
+				if (event.inViewPercentage >= visibilityPercent) {
+					if (refreshTimeoutId === undefined) {
+					refreshTimeoutId = setTimeout(function() {
+						googletag.pubads().refresh([slot]);
+						refreshTimeoutId = undefined;
+					}, refreshTimeout * 1000);
+					}
+				} else {
+					clearTimeout(refreshTimeoutId);
+					refreshTimeoutId = undefined;
+				}
+			}
+	});
+	// Bottom Rail resfresh function ends
+
+    googletag.pubads().disableInitialLoad();
+    googletag.pubads().collapseEmptyDivs();
+
+    googletag.enableServices();
+});
+
+function adsLoadFunction() {
+    var adUnits = document.querySelectorAll("div.adSpace:not(.lazyLoadAd)");
+    var adUnitsLength = adUnits.length;
+
+    var gptSlots;
+    if (window.googletag && googletag.apiReady) {
+        gptSlots = googletag.pubads().getSlots();
+    }
+
+    for (var i = 0; i < adUnitsLength; i++) {
+        var block = adUnits[i];
+        if(block.style.display === 'none'){
+            continue;
+        }
+        var slot = gptSlots.find(
+            item => item.getSlotElementId() === block.id
+        );
+
+        if (slot !== null && slot !== undefined) {
+            googletag.cmd.push(function () {
+                googletag.pubads().refresh([slot]);
+            });
+        }
+    }
+
+	if (typeof lazyLoadFunc === "function") {
+		window.onscroll = lazyLoadFunc;
+	}
+}
+
+    
+        function scrollBillboard() {
+        window.addEventListener('scroll', function(){
+        var billboardWrapper = document.getElementsByClassName('ad-top-billboard')[0];
+        if(!billboardWrapper || billboardWrapper.classList.contains('ad-top-billboard-rendered')){
+        return;
+        }
+        billboardWrapper.classList.add('ad-top-billboard-init');
+        });
+        }
+    
+window.onload = function() {
+    scrollBillboard();
+    var width = top.innerWidth || document.documentElement.clientWidth;
+    if (width >= 768){
+    } else {
+        hideAdSlot("div-gpt-ad-1571234814854-0");
+        hideAdSlot("div-gpt-ad-1543611524799-0");
+        hideAdSlot("div-gpt-ad-1543611617896-0");
+    }
+    isSmallScreen = (width < 768);
+
+
+window.addEventListener("resize", onResize);
+ checkGoogleTagApi();
+//    trackGoogleTagApiAndFetchUAM();
+
+};
+
+//load the apstag.js library
+!function(a9,a,p,s,t,A,g){if(a[a9])return;function q(c,r){a[a9]._Q.push([c,r])}a[a9]={init:function(){q("i",arguments)},fetchBids:function(){q("f",arguments)},setDisplayBids:function(){},targetingKeys:function(){return[]},_Q:[]};A=p.createElement(s);A.async=!0;A.src=t;g=p.getElementsByTagName(s)[0];g.parentNode.insertBefore(A,g)}("apstag",window,document,"script","//c.amazon-adsystem.com/aax2/apstag.js");
+
+//initialize the apstag.js library on the page to allow bidding
+apstag.init({
+     pubID: '0533cdda-c21a-4258-b901-6bef203b7488', //enter your pub ID here as shown above, it must within quotes
+     adServer: 'googletag'
+});
+
+function trackGoogleTagApiAndFetchUAM(){
+    if (window.googletag && googletag.apiReady && window.googletag.pubadsReady) {
+        fetchUam();
+        return;
+    }
+    setTimeout(function () {
+        trackGoogleTagApiAndFetchUAM();
+    }, 100);
+}
+
+function fetchUam(){
+var slots = googletag.pubads().getSlots();
+if(slots.Length < 1){
+    return;
+}
+var apstagSlots = [];
+for(var i in slots) {
+
+    var slot = {
+         slotID: slots[i].getSlotElementId(),
+         slotName: slots[i].getAdUnitPath(),
+         sizes: []
+     };
+    slots[i].getSizes().forEach(function(size) {
+	if(typeof size != 'object'){
+		slot.sizes.push(size);
+		return;
+	}
+	var currentSize = [];
+	currentSize.push(size.getWidth());
+	currentSize.push(size.getHeight());
+        slot.sizes.push(currentSize);
+    });
+    apstagSlots.push(slot);
+}
+
+apstag.fetchBids({
+     slots: apstagSlots,
+     timeout: 2e3
+}, function(bids) {
+     // set apstag targeting on googletag, then trigger the first DFP request in googletag's disableInitialLoad integration
+     googletag.cmd.push(function(){
+         apstag.setDisplayBids();
+		 checkGoogleTagApi();
+     });
+});
+}
+    </script>
+<title>Watch As NVIDIA Noise2Noise AI Magically Fixes Grainy Photos With Deep Learning Image Gallery</title>
+<meta name="title" content="Watch As NVIDIA Noise2Noise AI Magically Fixes Grainy Photos With Deep Learning Image Gallery" />
+<meta name="description" content="It’s happened to us all at some point in time — you capture an image in less-than-ideal light conditions and the end result is a is grainy photo..." />
+<meta name="keywords" content="AI, machine learning, (nasdaq:nvda), deep learning, noise2noise" />
+<meta name="viewport" content="width=1020">
+<meta name="ROBOTS" content="NOINDEX, FOLLOW">
+<meta name="rating" content="general" />
+<meta name="distribution" content="global" />
+<link rel="canonical" href="https://hothardware.com/news/nvidia-noise2noise-machine-learning-ai-magically-restores-your-grainy-photos" />
+<link href="/Content/production/styles.css" rel="stylesheet" />
+</head>
+<body>
+
+<noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MFKBH3"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+
+<script type="f0b024bdcc9ceddab567b803-text/javascript">
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-MFKBH3');</script>
+
+<div id="overlay" class="apple_overlay" style=" background-image: none; display: block;background-color: transparent;">
+<div class="gallery-logo"><a href="/"><img alt="HotHardware: The Hottest Technologies, Tested and Burned In" src="/content/images/test-logo-2.png" /></a></div>
+<div class="contentWrap">
+<div class="ad-towers ad-tower-left">
+
+<div id='div-gpt-ad-1543611524799-0' style='height:600px; width:160px;' class="adSpace lazyLoadAd">
+<script data-cfasync="false" type="text/javascript">
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1543611524799-0'); });
+</script>
+</div> <br />
+
+<div id='div-gpt-ad-1543611617896-0' style='height:600px; width:160px;' class="adSpace lazyLoadAd">
+<script data-cfasync="false" type="text/javascript">
+googletag.cmd.push(function() { googletag.display('div-gpt-ad-1543611617896-0'); });
+</script>
+</div></div>
+<div class="content">
+<div class="ad-leaderboard" style="text-align: center; margin-bottom: 15px;">
+
+<div id="div-gpt-ad-1571234814854-0" class='adSpace'>
+<script data-cfasync="false" type="text/javascript"> googletag.cmd.push(function() {googletag.display('div-gpt-ad-1571234814854-0');});
+	</script>
+</div>
+</div>
+<div class="cn-header cn-header-popup">
+<h1><a class="black" href="https://hothardware.com/news/nvidia-noise2noise-machine-learning-ai-magically-restores-your-grainy-photos">Watch As NVIDIA Noise2Noise AI Magically Fixes Grainy Photos With Deep Learning</a></h1>
+</div>
+<div class="cn-body cn-body-">
+<div class="centerContent">
+<div class="cn-image img-" id="cn-image">
+<img alt="Watch As NVIDIA Noise2Noise AI Magically Fixes Grainy Photos With Deep Learning" src="/Image/Resize/?width=1170&amp;height=1170&amp;imageFile=/contentimages/NewsItem/45041/content/big_noise2noise_koala_banner.jpg" />
+</div>
+<div class="cn-imagelist">
+<table border="0" cellpadding="2" width="1000" class="Byline nocellspacing">
+<tr>
+<td>Viewing image <span class="curIndex">2</span> of 5</td>
+</tr>
+</table>
+<div class="image-gallery">
+<table border="0" cellpadding="0" class="ig-strip ig-strip-2 wide nocellspacing" data-step="8" data-start="1" data-offset="-2">
+<tr>
+<td width="28" class="text-center">
+<a class="prev" href="#">
+<img src="/content/images/arrow_left_on.png" alt="Scroll left" style="border: 0;" />
+</a>
+</td>
+<td width="904">
+<div class="ig-pane ig-pane-2" style="width: 896px;">
+<ul>
+<li class="">
+<table class="nocellspacing" style="width:100px;height:100px;">
+<tr>
+<td class="text-center">
+<a class="lnkBigImage_" href="/photo-gallery/NewsItem/45041?image=big_noise2noise.jpg&amp;amp;tag=&amp;amp;p=1">
+<img alt="Watch As NVIDIA Noise2Noise AI Magically Fixes Grainy Photos With Deep Learning" src="/Image/CropThumbnail/?width=92&amp;height=92&amp;imageFile=/contentimages/NewsItem/45041/content/big_noise2noise.jpg" />
+</a>
+</td>
+</tr>
+</table>
+</li>
+<li class="selected">
+<table class="nocellspacing" style="width:100px;height:100px;">
+<tr>
+<td class="text-center">
+<a class="lnkBigImage_" href="/photo-gallery/NewsItem/45041?image=big_noise2noise_koala_banner.jpg&amp;amp;tag=&amp;amp;p=1">
+<img alt="Watch As NVIDIA Noise2Noise AI Magically Fixes Grainy Photos With Deep Learning" src="/Image/CropThumbnail/?width=92&amp;height=92&amp;imageFile=/contentimages/NewsItem/45041/content/big_noise2noise_koala_banner.jpg" />
+</a>
+</td>
+</tr>
+</table>
+</li>
+<li class="">
+<table class="nocellspacing" style="width:100px;height:100px;">
+<tr>
+<td class="text-center">
+<a class="lnkBigImage_" href="/photo-gallery/NewsItem/45041?image=big_noise2noise_nvidia_KOALA_Bear.jpg&amp;amp;tag=&amp;amp;p=1">
+<img alt="Watch As NVIDIA Noise2Noise AI Magically Fixes Grainy Photos With Deep Learning" src="/Image/CropThumbnail/?width=92&amp;height=92&amp;imageFile=/contentimages/NewsItem/45041/content/big_noise2noise_nvidia_KOALA_Bear.jpg" />
+</a>
+</td>
+</tr>
+</table>
+</li>
+<li class="">
+<table class="nocellspacing" style="width:100px;height:100px;">
+<tr>
+<td class="text-center">
+<a class="lnkBigImage_" href="/photo-gallery/NewsItem/45041?image=big_noise2noise_nvidia_MRI.jpg&amp;amp;tag=&amp;amp;p=1">
+<img alt="Watch As NVIDIA Noise2Noise AI Magically Fixes Grainy Photos With Deep Learning" src="/Image/CropThumbnail/?width=92&amp;height=92&amp;imageFile=/contentimages/NewsItem/45041/content/big_noise2noise_nvidia_MRI.jpg" />
+</a>
+</td>
+</tr>
+</table>
+</li>
+<li class="">
+<table class="nocellspacing" style="width:100px;height:100px;">
+<tr>
+<td class="text-center">
+<a class="lnkBigImage_" href="/photo-gallery/NewsItem/45041?image=big_noise2noise_nvidia_MRI.png&amp;amp;tag=&amp;amp;p=1">
+<img alt="Watch As NVIDIA Noise2Noise AI Magically Fixes Grainy Photos With Deep Learning" src="/Image/CropThumbnail/?width=92&amp;height=92&amp;imageFile=/contentimages/NewsItem/45041/content/big_noise2noise_nvidia_MRI.png" />
+</a>
+</td>
+</tr>
+</table>
+</li>
+</ul>
+</div>
+</td>
+<td width="28" class="text-center">
+<a class="next" href="#">
+<img src="/content/images/arrow_right_on.png" alt="Scroll right" style="border: 0;" />
+</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script src="/Scripts/production/jquery-3.1.1.min.js" type="f0b024bdcc9ceddab567b803-text/javascript"></script>
+<script src="/Scripts/production/init.js?v=1.0.1" type="f0b024bdcc9ceddab567b803-text/javascript"></script>
+<script src='/Scripts/production/site.js' async='async' type="f0b024bdcc9ceddab567b803-text/javascript"></script>
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="f0b024bdcc9ceddab567b803-|49" defer=""></script></body>
+</html>
